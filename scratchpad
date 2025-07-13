@@ -1,7 +1,61 @@
-"I'm a Full-Stack Developer with 3 years of experience building and maintaining web applications. I'm passionate about creating efficient, user-friendly solutions using technologies like React, Node.js, PostgreSQL, and AWS. I thrive in collaborative environments and am always eager to learn and apply new technologies to solve complex problems. My background in Computer Science gives me a unique perspective on the development process."
+Example Inputs for Industry Insights (User Provides/Selects)
 
-    React
-    Node.js
-    Python/Django
-    SQL
-    Git
+- Confirmed Industry: "tech-software-development" (User confirms or selects from a list based on their profile)
+- Target Roles for Insights:
+    - "Senior Software Engineer"
+    - "Full-Stack Developer"
+    - "Backend Engineer"
+- Location Preference for Insights: "Remote (USA)" (Or specific city/state, e.g., "San Francisco, CA")
+- Desired Seniority Level for Insights: "Senior" (e.g., Junior, Mid-Level, Senior, Lead)
+
+
+- Resume Content: (String/Text) - The User model links to a Resume model, indicating resume content is likely uploaded or entered.
+
+
+Example Content for Fields
+
+- name: "Alex Johnson"
+- imageUrl: "https://example.com/images/alex_profile.jpg" (or null if not provided)
+- industry: "tech-software-development"
+- bio: "Experienced full-stack developer with a passion for creating intuitive user interfaces and scalable backend systems. Proficient in React, Node.js, and cloud platforms. Seeking challenging opportunities in a fast-paced tech environment."
+- experience: 7
+- skills:
+    - "JavaScript"
+    - "TypeScript"
+    - "React"
+    - "Next.js"
+    - "Node.js"
+    - "Express"
+    - "Python"
+    - "PostgreSQL"
+    - "Docker"
+    - "AWS"
+    - "Git"
+    - "Agile Methodologies"
+
+
+- Resume Content: (Could be Markdown text like)
+
+    Alex Johnson
+    Full-Stack Developer | React, Node.js, Cloud
+    alex.j@email.com | (555) 123-4567 | linkedin.com/in/alexj | github.com/alexj
+
+    Summary
+    Results-driven Full-Stack Developer with 7 years of experience designing, developing, and deploying web applications...
+    
+    Experience
+    Senior Software Engineer, Tech Solutions Inc. - (2020-Present)
+    - Led development of a new customer portal using Next.js and TypeScript...
+    - Mentored junior developers...
+
+    Software Engineer, Web Innovators - (2017-2020)
+    - Developed backend APIs using Node.js and Express...
+
+    Skills
+    - Frontend: React, Next.js, JavaScript, TypeScript, HTML, CSS, Tailwind CSS
+    - Backend: Node.js, Express, Python, Flask
+    - Databases: PostgreSQL, MongoDB
+    - Cloud/DevOps: AWS (EC2, S3, Lambda), Docker, Git, Jenkins
+
+    Education
+    B.S. in Computer Science, State University - 2017

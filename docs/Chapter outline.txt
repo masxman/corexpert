@@ -1,0 +1,426 @@
+PROJECT OVERVIEW
+The AI Career Coach is a web application that guides users through a structured career development journey. The user workflow is as follows:
+
+1. Users create an account and log into the system
+2. New users complete an onboarding process providing details about their profession, industry, experience level, and background
+3. Based on this profile information, the system displays personalized market insights including industry trends, salary data, and in-demand skills
+4. Users can access tools to build their professional materials:
+   - Resume builder with AI-powered feedback and optimization
+   - Cover letter generator tailored to specific job applications
+   - Interview preparation module featuring sets of 10 industry-specific questions
+5. The interview module provides scoring and specific improvement recommendations based on user performance
+
+The application leverages AI throughout to personalize the experience and provide data-driven career guidance.
+
+Chapter 2: Technologies Used
+
+2.1 Frontend Technologies
+2.1.1 Next.js
+The project is built using Next.js 15, a React framework that provides server-side rendering, static site generation, and API routes. The application uses Next.js's App Router for routing and navigation.
+
+2.1.2 React
+React 19 is used for building the user interface components. The project leverages React Hooks and the latest React features for state management and component lifecycle.
+
+2.1.3 UI Components and Styling
+• Tailwind CSS: Used for styling with utility-first CSS framework
+• Shadcn UI: Component library based on Radix UI primitives
+• Next Themes: Theme management (light/dark mode)
+
+2.1.4 Form Handling and Validation
+• React Hook Form: Form state management and validation
+• Zod: Schema validation library
+• Hookform/Resolvers: Integration between React Hook Form and Zod
+
+2.2 Backend Technologies
+2.2.1 Database
+• Neon DB: Serverless PostgreSQL database
+• Prisma ORM: Database toolkit for type-safe queries and migrations
+
+2.2.2 Authentication
+• Clerk: Authentication and user management
+
+2.2.3 API and Server
+• Next.js API Routes: Backend API endpoints
+• Inngest: Background job processing for asynchronous tasks
+
+2.3 AI and Data Processing
+2.3.1 AI Integration
+• Google Generative AI: Integration with Google's Gemini API for AI capabilities
+• AI-powered features: skill assessment, resume analysis
+
+
+Chapter 3: PROJECT SUBJECT
+
+3.1 Introduction
+AI Career Coach is a structured career development platform that guides users through a sequential process of profile creation, market analysis, and professional tool generation. The application uses AI to create a personalized experience where users first provide information about their professional background, then receive tailored market insights, and finally access tools for resume building, cover letter generation, and interview preparation. Each step builds upon the previous, creating a comprehensive career development journey that addresses the specific needs of individual users based on their industry, role, and experience level.
+
+3.2 About System
+The AI Career Coach system follows a user-centered workflow that starts with authentication and profile creation. After logging in, users complete an onboarding process that captures their profession, industry, experience level, and background information. This profile data serves as the foundation for all subsequent interactions with the system.
+
+The system architecture includes:
+• Authentication layer using Clerk for secure user management
+• User profile database storing professional background information
+• AI integration with Google's Gemini API for personalized content generation
+• Interactive tools for document creation and interview practice
+• Market insights module that pulls industry-specific data
+
+The application guides users through a logical progression:
+1. Profile creation → 2. Market insights → 3. Resume building → 4. Cover letter generation → 5. Interview preparation
+
+3.3 Problem Statement
+The AI Career Coach addresses specific challenges in the modern job search and career development process:
+
+1. Fragmented Career Tools: Job seekers typically need to use multiple disconnected platforms for market research, resume building, and interview preparation. This system unifies these tools in a single, coherent workflow.
+
+2. Generic Career Advice: Most career resources provide generalized guidance that doesn't account for industry-specific requirements. The application delivers personalized insights based on the user's specific professional background.
+
+3. Resume Optimization: Many qualified candidates are rejected because their resumes aren't optimized for applicant tracking systems. The platform provides AI-powered resume analysis and improvement suggestions.
+
+4. Interview Readiness: Job seekers often struggle to prepare effectively for interviews in their specific field. The system generates relevant industry and role-specific questions with targeted feedback.
+
+5. Time-Consuming Job Application Process: Creating tailored materials for each application is time-intensive. The AI-powered cover letter generator streamlines this process while maintaining personalization.
+
+3.4 Modules
+The AI Career Coach consists of five core modules that follow the user's career development journey:
+
+3.4.1 User Authentication & Profile Module
+Manages the user login process using Clerk authentication and captures essential professional information during onboarding. The profile form collects:
+• Current professional role
+• Industry sector
+• Years of experience
+• Skills and expertise
+• Professional background summary
+
+3.4.2 Market Insights Module
+Analyzes the user's profile data and generates industry-specific insights using Google's Gemini AI. The module displays:
+• Salary ranges for relevant roles
+• Industry growth projections
+• In-demand skills for the user's field
+• Current market trends
+• Recommended skills to develop
+
+3.4.3 Resume Builder Module
+Provides an interactive resume creation tool with markdown support and AI-powered optimization. Features include:
+• Structured resume templates
+• Real-time preview and editing
+• ATS compatibility scoring
+• Content improvement suggestions
+• PDF export functionality
+
+3.4.4 Cover Letter Generator
+Creates customized cover letters based on the user's profile and specific job details. The module:
+• Takes inputs for job title, company, and job description
+• Generates tailored content highlighting relevant experience
+• Maintains professional formatting
+• Allows editing and refinement
+• Provides downloadable documents
+
+3.4.5 Interview Preparation Module
+Delivers sets of 10 industry-specific interview questions with assessment capabilities. The module:
+• Generates technical and behavioral questions relevant to the user's field
+• Provides multiple-choice answer options
+• Scores user responses
+• Identifies knowledge gaps and areas for improvement
+• Offers specific recommendations for interview success
+
+
+Chapter 4: SYSTEM REQUIREMENTS & ANALYSIS
+
+4.1 Definition
+The AI Career Coach system is defined as a web-based application that leverages artificial intelligence to provide personalized career guidance, professional document creation, and interview preparation. The system acts as a virtual career advisor, helping users navigate their professional development journey through structured, data-driven processes.
+
+4.2 Existing System
+Current career development solutions typically consist of:
+• Generic job boards with minimal personalization
+• Static resume templates without optimization guidance
+• General career advice articles and videos
+• Separate, disconnected platforms for different career development needs
+• Limited or no AI-powered personalization
+• Minimal industry-specific insights and recommendations
+
+4.3 Limitations of present System
+Existing career development platforms have several limitations:
+• Lack of personalized guidance based on individual professional backgrounds
+• No integration between different career tools (resume builders, interview prep, market research)
+• Limited or no AI-powered optimization for application materials
+• Generic advice that doesn't account for industry-specific requirements
+• Absence of real-time market data and insights
+• No structured workflow to guide users through the career development process
+• Limited feedback mechanisms for improving professional materials
+
+4.4 Proposed System
+The AI Career Coach addresses these limitations through:
+• A unified platform integrating all career development tools in one system
+• Personalized user experience based on profession, industry, and background
+• AI-powered content generation for resumes and cover letters
+• Industry-specific interview questions and preparation
+• Real-time market insights tailored to user profiles
+• Structured workflow guiding users through the career development process
+• Interactive tools with immediate feedback and optimization suggestions
+
+4.5 Feasibility Study
+The implementation of the AI Career Coach is feasible across several dimensions:
+
+Technical Feasibility:
+• Next.js and React provide mature frameworks for building the frontend
+• Neon DB offers a reliable and scalable database solution
+• Google's Gemini API is well-documented and suitable for AI integration
+• Clerk provides secure authentication mechanisms
+• All technologies are production-ready and well-supported
+
+Economic Feasibility:
+• Serverless architecture minimizes infrastructure costs
+• AI API costs scale with usage, allowing for controlled growth
+• Development leverages modern frameworks, reducing development time
+• Potential for subscription-based revenue model
+
+Operational Feasibility:
+• Web-based delivery makes the application accessible across devices
+• Intuitive UI reduces user training needs
+• Background processing handles resource-intensive operations
+• CI/CD pipelines allow for regular updates and improvements
+
+4.6 Functional Requirements
+Key functional requirements of the system include:
+
+User Management:
+• User registration and authentication
+• Profile creation and management
+• Industry and role selection
+
+Market Insights:
+• Industry-specific salary data retrieval
+• Skill demand analysis
+• Job market trend visualization
+
+Resume Builder:
+• Template-based resume creation
+• Markdown editing capabilities
+• PDF generation and export
+• ATS compatibility analysis
+
+Cover Letter Generator:
+• Job-specific cover letter creation
+• Customizable templates
+• Content personalization based on job description
+• Export to various formats
+
+Interview Preparation:
+• Question generation based on user profile
+• Multiple-choice assessment
+• Score tracking and analysis
+• Improvement recommendations
+
+4.7 Non-Functional Specification
+The system must meet the following non-functional requirements:
+
+Performance:
+• Page load time under 2 seconds
+• AI response generation under 5 seconds
+• Support for concurrent users
+
+Security:
+• Secure user authentication
+• Data encryption at rest and in transit
+• GDPR and privacy compliance
+• Regular security audits
+
+Reliability:
+• 99.9% uptime
+• Graceful error handling
+• Data backup and recovery mechanisms
+
+Usability:
+• Intuitive, responsive user interface
+• Accessibility compliance (WCAG 2.1)
+• Cross-browser and device compatibility
+• Clear user guidance and tooltips
+
+Scalability:
+• Architecture that supports user growth
+• Database sharding capabilities
+• Efficient API usage management
+• Resource optimization for cost control
+
+4.8 Requirement Specification
+The detailed specifications for the AI Career Coach include:
+
+Data Requirements:
+• User profiles (personal information, experience, skills)
+• Industry data (salary ranges, growth rates, skill demands)
+• Resume and cover letter templates
+• Interview question bank by industry
+• User interaction history and preferences
+
+Interface Requirements:
+• Responsive web interface for desktop and mobile
+• Modern, clean UI design following accessibility guidelines
+• Interactive dashboard for progress tracking
+• WYSIWYG and markdown editors for document creation
+• Visualization components for market data
+
+System Requirements:
+• Server: Node.js runtime environment
+• Database: PostgreSQL via Neon DB
+• Authentication: Clerk identity management
+• AI Processing: Google Gemini API
+• Hosting: Vercel or similar serverless platform
+• CI/CD: GitHub Actions or equivalent
+• Monitoring: Application performance and error tracking
+
+
+Chapter 7: DATA DESIGN
+
+7.1 Database Architecture
+The AI Career Coach system uses a relational database architecture implemented with PostgreSQL via Neon DB. The database design follows a normalized structure to ensure data integrity and efficient queries. Prisma ORM is used as the data access layer, providing type-safe database operations and migration management.
+
+7.2 Entity Relationship Diagram
+The core entities in the system and their relationships include:
+
+• User: Central entity storing user account information and professional details
+  - One-to-many relationship with Assessment
+  - One-to-many relationship with CoverLetter
+  - One-to-one relationship with Resume
+  - Many-to-one relationship with IndustryInsight
+
+• Resume: Stores user resume content and feedback
+  - One-to-one relationship with User
+
+• CoverLetter: Contains cover letter content and job application details
+  - Many-to-one relationship with User
+
+• Assessment: Tracks interview preparation results and feedback
+  - Many-to-one relationship with User
+
+• IndustryInsight: Stores industry-specific data and trends
+  - One-to-many relationship with User
+
+The relationships are implemented using foreign keys with appropriate constraints to maintain referential integrity.
+
+7.3 Data Models
+The primary data models in the system include:
+
+7.3.1 User Model
+• ID: Unique identifier (UUID)
+• ClerkUserID: External authentication ID
+• Email: User's email address
+• Name: User's full name
+• ImageUrl: Profile image URL
+• Industry: User's industry sector
+• Bio: Professional background summary
+• Experience: Years of professional experience
+• Skills: Array of user skills
+• CreatedAt: Account creation timestamp
+• UpdatedAt: Last update timestamp
+
+7.3.2 Resume Model
+• ID: Unique identifier
+• UserID: Reference to user
+• Content: Markdown-formatted resume content
+• ATSScore: Applicant tracking system compatibility score
+• Feedback: AI-generated improvement suggestions
+• CreatedAt: Creation timestamp
+• UpdatedAt: Last update timestamp
+
+7.3.3 Cover Letter Model
+• ID: Unique identifier
+• UserID: Reference to user
+• Content: Cover letter content
+• JobDescription: Target job description
+• CompanyName: Target company
+• JobTitle: Target position
+• Status: Document status (draft/completed)
+• CreatedAt: Creation timestamp
+• UpdatedAt: Last update timestamp
+
+7.3.4 Assessment Model
+• ID: Unique identifier
+• UserID: Reference to user
+• QuizScore: Overall assessment score
+• Questions: JSON array of question objects
+• Category: Assessment category
+• ImprovementTip: AI-generated advice
+• CreatedAt: Assessment timestamp
+• UpdatedAt: Last update timestamp
+
+7.3.5 Industry Insight Model
+• ID: Unique identifier
+• Industry: Industry identifier
+• SalaryRanges: JSON array of salary data
+• GrowthRate: Industry growth percentage
+• DemandLevel: Enum (High/Medium/Low)
+• TopSkills: Array of in-demand skills
+• MarketOutlook: Enum (Positive/Neutral/Negative)
+• KeyTrends: Array of industry trends
+• RecommendedSkills: Array of skill recommendations
+• LastUpdated: Data refresh timestamp
+• NextUpdate: Scheduled update timestamp
+
+7.4 Data Dictionary
+Each field in the database is defined with the following specifications:
+• Field Name
+• Data Type
+• Constraints (Primary Key, Foreign Key, Unique, Not Null)
+• Description
+• Validation Rules
+
+For example:
+• User.clerkUserId: String, Unique, Not Null, External authentication identifier from Clerk
+• Resume.content: Text, Not Null, Markdown-formatted resume content
+• Assessment.quizScore: Float, Not Null, Score between 0-100 representing assessment performance
+
+7.5 Data Flow
+The data flow in the system follows these patterns:
+
+7.5.1 User Registration Flow
+1. User creates account via Clerk authentication
+2. Clerk user ID stored in database
+3. User completes onboarding profile
+4. Profile data persisted to User table
+5. Industry selection triggers Industry Insight retrieval
+
+7.5.2 Resume Creation Flow
+1. User inputs resume details
+2. Data transformed to markdown format
+3. Content saved to Resume table
+4. AI analysis performed on content
+5. Feedback and ATS score updated
+
+7.5.3 Assessment Flow
+1. System generates questions based on user profile
+2. User completes assessment
+3. Responses scored and stored
+4. AI generates improvement recommendations
+5. Results persisted to Assessment table
+
+7.6 Data Privacy and Security
+The database design incorporates several security measures:
+
+• Personal Identifiable Information (PII) is stored securely and accessed only when necessary
+• Authentication is handled externally by Clerk
+• Database connections are encrypted using TLS
+• Sensitive data is encrypted at rest
+• Access controls limit data exposure to authorized users only
+• Regular backups ensure data durability
+• GDPR compliance mechanisms for data export and deletion
+
+7.7 Data Migration Strategy
+The database schema evolution is managed through:
+
+• Prisma migrations for version-controlled schema changes
+• Blue-green deployment for zero-downtime updates
+• Backup and restore procedures for rollback capabilities
+• Data validation during migration to ensure integrity
+• Scheduled maintenance windows for major schema changes
+
+7.8 Optimization Techniques
+Several optimization techniques are employed:
+
+• Appropriate indexing on frequently queried fields
+• Denormalization where beneficial for read performance
+• JSON fields for flexible schema requirements
+• Connection pooling for efficient database connections
+• Query optimization through Prisma's query builder
+• Caching frequently accessed data
+• Pagination for large data sets
+
