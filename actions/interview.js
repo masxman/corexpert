@@ -1,16 +1,20 @@
 "use server";
 
+// Import database client, authentication, and Google Generative AI SDK
 import { db } from "@/lib/prisma";
 import { auth } from "@clerk/nextjs/server";
 import { GoogleGenerativeAI } from "@google/generative-ai";
 
+// Initialize Google Generative AI with the Gemini API key
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
+// Function to generate a technical interview quiz based on user's industry and skills
 export async function generateQuiz() {
-  const { userId } = await auth();
+  const { userId } = await auth(); // Get the current user's ID
   if (!userId) throw new Error("Unauthorized");
 
+  // Fetch user profile to get industry and skills
   const user = await db.user.findUnique({
     where: { clerkUserId: userId },
     select: {
@@ -21,6 +25,7 @@ export async function generateQuiz() {
 
   if (!user) throw new Error("User not found");
 
+  // Create a prompt for the AI to generate quiz questions
   const prompt = `
     Generate 10 technical interview questions for a ${
       user.industry
@@ -44,9 +49,11 @@ export async function generateQuiz() {
   `;
 
   try {
+    // Generate quiz questions using the AI model
     const result = await model.generateContent(prompt);
     const response = result.response;
     const text = response.text();
+    // Clean up the AI's response to extract JSON
     const cleanedText = text.replace(/```(?:json)?\n?/g, "").trim();
     const quiz = JSON.parse(cleanedText);
 
@@ -57,16 +64,19 @@ export async function generateQuiz() {
   }
 }
 
+// Function to save the user's quiz results and generate improvement tips if needed
 export async function saveQuizResult(questions, answers, score) {
-  const { userId } = await auth();
+  const { userId } = await auth(); // Get the current user's ID
   if (!userId) throw new Error("Unauthorized");
 
+  // Fetch user profile
   const user = await db.user.findUnique({
     where: { clerkUserId: userId },
   });
 
   if (!user) throw new Error("User not found");
 
+  // Map each question to the user's answer and correctness
   const questionResults = questions.map((q, index) => ({
     question: q.question,
     answer: q.correctAnswer,
@@ -75,12 +85,13 @@ export async function saveQuizResult(questions, answers, score) {
     explanation: q.explanation,
   }));
 
-  // Get wrong answers
+  // Get wrong answers for improvement tips
   const wrongAnswers = questionResults.filter((q) => !q.isCorrect);
 
   // Only generate improvement tips if there are wrong answers
   let improvementTip = null;
   if (wrongAnswers.length > 0) {
+    // Prepare a prompt for the AI to generate a tip based on mistakes
     const wrongQuestionsText = wrongAnswers
       .map(
         (q) =>
@@ -100,6 +111,7 @@ export async function saveQuizResult(questions, answers, score) {
     `;
 
     try {
+      // Generate improvement tip using the AI model
       const tipResult = await model.generateContent(improvementPrompt);
 
       improvementTip = tipResult.response.text().trim();
@@ -111,6 +123,7 @@ export async function saveQuizResult(questions, answers, score) {
   }
 
   try {
+    // Save the assessment (quiz result) to the database
     const assessment = await db.assessment.create({
       data: {
         userId: user.id,
@@ -128,10 +141,12 @@ export async function saveQuizResult(questions, answers, score) {
   }
 }
 
+// Function to fetch all assessments (quiz results) for the current user
 export async function getAssessments() {
-  const { userId } = await auth();
+  const { userId } = await auth(); // Get the current user's ID
   if (!userId) throw new Error("Unauthorized");
 
+  // Fetch user profile
   const user = await db.user.findUnique({
     where: { clerkUserId: userId },
   });
@@ -139,6 +154,7 @@ export async function getAssessments() {
   if (!user) throw new Error("User not found");
 
   try {
+    // Fetch all assessments for the user, ordered by creation date
     const assessments = await db.assessment.findMany({
       where: {
         userId: user.id,
